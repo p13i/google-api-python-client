@@ -360,6 +360,8 @@ def build_from_document(
 
     # If an API Endpoint is provided on client options, use that as the base URL
     base = urljoin(service['rootUrl'], service["servicePath"])
+    mtls_base = urljoin(service['mtlsRootUrl'], service["servicePath"])
+
     if client_options:
         if type(client_options) == dict:
             client_options = google.api_core.client_options.from_dict(
@@ -399,6 +401,13 @@ def build_from_document(
         # authentication.
         else:
             http = build_http()
+
+        if client_options and client_options.client_cert_source_with_passphrase:
+            # decide if to try mtls.
+            base = mtls_base
+            print("using base: {}".format(base))
+            source = client_options.client_cert_source_with_passphrase
+            http.add_certificate(source.key_path, source.cert_path, "", source.passphrase)
 
     if model is None:
         features = service.get("features", [])

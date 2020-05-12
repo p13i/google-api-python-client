@@ -39,9 +39,9 @@ install_requires = [
     # currently upgrade their httplib2 version.
     # Please see https://github.com/googleapis/google-api-python-client/pull/841
     "httplib2>=0.9.2,<1dev",
-    "google-auth>=1.4.1",
+    "google-auth>=1.14.2",
     "google-auth-httplib2>=0.0.3",
-    "google-api-core>=1.13.0,<2dev",
+    "google-api-core>=1.17.0,<2dev",
     "six>=1.6.1,<2dev",
     "uritemplate>=3.0.0,<4dev",
 ]
