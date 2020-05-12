@@ -407,7 +407,7 @@ def build_from_document(
             base = mtls_base
             print("using base: {}".format(base))
             source = client_options.client_cert_source_with_passphrase()
-            http.add_certificate(source.key_path, source.cert_path, "", source.passphrase)
+            http.http.add_certificate(source.key_path, source.cert_path, "", source.passphrase)
 
     if model is None:
         features = service.get("features", [])

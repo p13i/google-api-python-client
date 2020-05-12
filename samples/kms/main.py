@@ -27,9 +27,13 @@ __author__ = 'jcgregorio@google.com (Joe Gregorio)'
 
 from googleapiclient.discovery import build
 
+#project="study-auth-265119"
+project="sijun-mtls-demo"
+path = '/usr/local/google/home/sijunliu/wks/google-api-python-client/samples/kms/'
+passphrase = ''
 
 class ClientCertSourceEncrypted(object):
-    def __init__(cert_path, key_path, passphrase)
+  def __init__(self, cert_path, key_path, passphrase):
         self.cert_path = cert_path
         self.key_path = key_path
         self.passphrase = passphrase
@@ -39,11 +43,10 @@ def main():
   cred = google.oauth2.credentials.UserAccessTokenCredentials()
 
   parent = "projects/{project}/locations/{location}".format(
-      project="study-auth-265119", location="global"
+      project=project, location="global"
   )
 
-  client_options = google.api_core.client_options()
-  path = '/usr/local/google/home/sijunliu/wks/google-api-python-client/samples/kms/'
+  client_options = google.api_core.client_options.ClientOptions()
   def source():
       return ClientCertSourceEncrypted(path + 'cert.pem', path + 'key.pem', passphrase)
   client_options.client_cert_source_with_passphrase = source
