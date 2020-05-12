@@ -132,7 +132,7 @@ def fix_method_name(name):
 
   Returns:
     The name with '_' appended if the name is a reserved word and '$' and '-'
-    replaced with '_'. 
+    replaced with '_'.
   """
     name = name.replace("$", "_").replace("-", "_")
     if keyword.iskeyword(name) or name in RESERVED_WORDS:
@@ -406,7 +406,7 @@ def build_from_document(
             # decide if to try mtls.
             base = mtls_base
             print("using base: {}".format(base))
-            source = client_options.client_cert_source_with_passphrase
+            source = client_options.client_cert_source_with_passphrase()
             http.add_certificate(source.key_path, source.cert_path, "", source.passphrase)
 
     if model is None:
